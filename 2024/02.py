@@ -1,11 +1,8 @@
 import sys
 import numpy as np
 
-
 fans1 = 0
 fans2 = 0
-left = []
-right = []
 
 def check(nl):
     nn = np.array(nl)
@@ -17,7 +14,6 @@ def check(nl):
         return True
     return False
 
-
 for line in sys.stdin:
     n = [ int(i) for i in line.strip().split()]
     if check(n):
@@ -25,10 +21,11 @@ for line in sys.stdin:
         fans2 += 1
     else:
         # O(n2)
-        # Optimization to O(nlogn) (caped by complexity of sort) :
+        # Optimization to O(n):
         # * Skip line with multiple neg diff and pos diff(to many bad levels)
+        # * Not to sort the diff list
         # * Return the BadLevel candidate list after the first check
-        # But O(2) is good enough for getting gold stars of the day
+        # But O(n2) is good enough for getting gold stars of the day :D
         for i in range(len(n)):
             t = n.copy()
             t.pop(i)
